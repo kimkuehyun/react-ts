@@ -1,18 +1,11 @@
 import React from 'react';
 import './App.css';
-import Form from './components/Form';
+import Count from './components/Count';
 
 function App() {
-  const onSubmit = (form: {
-    name: string;
-    desc: string;
-  }) => {
-    console.log(form);
-  };
-
   return (
     <div className="App">
-      <Form onSubmit={onSubmit} />
+      <Count />
     </div>
   );
 }
