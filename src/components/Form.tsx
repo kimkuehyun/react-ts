@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface FormProps {
     onSubmit: (form: { 
@@ -8,6 +8,8 @@ interface FormProps {
 };
 
 function Form({ onSubmit }: FormProps) {
+    const inputRef = useRef<HTMLInputElement>(null);
+
     const [form, setForm] = useState({
         name: '',
         desc: ''
@@ -33,12 +35,15 @@ function Form({ onSubmit }: FormProps) {
             name: '',
             desc: ''
         });
+
+        if(!inputRef.current) return;
+        inputRef.current.focus();
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input name='name' value={name} onChange={onChange} /><br />
+                <input name='name' value={name} onChange={onChange} ref={inputRef} /><br />
                 <input name='desc' value={desc} onChange={onChange} /><br />
                 <input type='submit' value='등록' />
             </form>
