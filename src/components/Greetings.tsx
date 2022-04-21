@@ -1,18 +1,21 @@
 import React from 'react';
 
 /**
- * 컴포넌트의 props중 생략해도 되는 값이 존재하면 변수 뒤에 ?를 붙여준다.
+ * 컴포넌트에서 함수를 props로 받아와야 한다면 아래와 같이 지정한다.
  */
 interface GreetingsProps {
     name: string;
     desc: string;
     optional?: string;
+    onClick: (name: string) => void;
 };
 
 /**
  * React.FC를 생략하면 defaultProps는 잘 동작한다.
  */
-const Greetings = ({ name, desc, optional }: GreetingsProps) => {
+const Greetings = ({ name, desc, optional, onClick }: GreetingsProps) => {
+    const handleClick = () => onClick(name);
+
     return (
         <div>
             {name}<br />
@@ -20,6 +23,9 @@ const Greetings = ({ name, desc, optional }: GreetingsProps) => {
             {
                 optional && <p>{optional}</p>
             }
+            <div>
+                <button onClick={handleClick}>Button</button>
+            </div>
         </div>
     );
 };
