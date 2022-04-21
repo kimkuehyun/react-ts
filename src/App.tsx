@@ -1,15 +1,11 @@
 import React from 'react';
 import './App.css';
-import Greetings from './components/Greetings';
+import Count from './components/Count';
 
 function App() {
-  const onClick = (name: string) => {
-    alert(`${name}`);
-  }
-
   return (
     <div className="App">
-      <Greetings name='손소독' onClick={onClick} />
+      <Count />
     </div>
   );
 }
